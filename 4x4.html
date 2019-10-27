@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="C2DImage.js"></script>
+    <style>
+    	* {
+    		box-sizing: border-box;
+    	}
+    canvas {
+		padding: 0;
+    	margin-top: 100px;
+    	margin-left: 100px;
+    	height: 512px;
+    	width: 512px;
+    	background-color: white;
+	}
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+
+	let imgOrig = new C2DImage(4);
+	let imgForCanvas = new C2DImage(1,512,512);
+	imgOrig.saveToImage(imgForCanvas);
+	let data = imgForCanvas.data;
+	//let data = imgOrig.data;
+
+
+    for(let y = 0; y < data.length; ++y) {
+    	for(let x = 0; x < data[y].length; ++x) {
+    		let c = data[y][x];
+    		let r = c.r;
+    		let g = c.g;
+    		let b = c.b;
+    		let a = c.a;
+
+    		let s = `rgb(${r},${g},${b})`;
+    		if (a !== null)
+    			s = `rgba(${r},${g},${b},${a})`;
+
+			//ctx.fillStyle = "rgb(255,0,0)";
+			ctx.fillStyle = s;
+			ctx.fillRect(x, y, 1, 1);
+    	}
+    }
+
+
+    </script>
+</body>
+</html>
