@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" width="512" height="512"></canvas>
 
     <script>
 
@@ -33,7 +33,6 @@
 	imgOrig.saveToImage(imgForCanvas);
 	let data = imgForCanvas.data;
 	//let data = imgOrig.data;
-
 
     for(let y = 0; y < data.length; ++y) {
     	for(let x = 0; x < data[y].length; ++x) {
